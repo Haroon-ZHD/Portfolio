@@ -1,0 +1,287 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <title>Stages - Haroon ZAHID</title>
+    <style>
+        :root { --primary: #00e599; --bg: #050505; --card-bg: #121212; --text: #e5e7eb; --text-muted: #9ca3af; }
+        body { margin: 0; font-family: 'Consolas', 'Monaco', monospace; background-color: var(--bg); color: var(--text); overflow-x: hidden; }
+        
+        body::before { content: " "; display: block; position: fixed; top: 0; left: 0; bottom: 0; right: 0; background: linear-gradient(rgba(18, 16, 16, 0) 50%, rgba(0, 0, 0, 0.25) 50%), linear-gradient(90deg, rgba(255, 0, 0, 0.06), rgba(0, 255, 0, 0.02), rgba(0, 0, 255, 0.06)); z-index: 999; background-size: 100% 2px, 3px 100%; pointer-events: none; }
+
+        header { background-color: rgba(5,5,5,0.95); padding: 1rem 2%; position: fixed; width: 96%; top: 0; display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid #333; z-index: 1000; }
+        nav { display: flex; gap: 15px; }
+        nav a { color: var(--text); text-decoration: none; font-size: 0.9rem; text-transform: uppercase; transition: 0.3s; }
+        nav a:hover, nav a.active { color: var(--primary); text-shadow: 0 0 10px rgba(0,229,153,0.8); }
+
+        section { padding: 120px 10%; max-width: 1000px; margin: 0 auto; }
+        h2 { border-left: 4px solid var(--primary); padding-left: 15px; margin-bottom: 40px; text-transform: uppercase; letter-spacing: 2px; }
+        
+        .stage-box { 
+            background: var(--card-bg); padding: 30px; margin-bottom: 30px; border: 1px solid #333; 
+            display: flex; flex-wrap: wrap; gap: 20px; align-items: center; 
+            opacity: 0; transform: translateX(-20px); animation: slideIn 0.7s ease-out forwards;
+            transition: 0.3s;
+            /* J'ai retiré le style pointillé ici pour que ce soit uniforme */
+        }
+        .stage-box:hover { border-color: var(--primary); box-shadow: -5px 5px 0px rgba(0, 229, 153, 0.2); }
+
+        .stage-info { flex: 2; }
+        .stage-action { flex: 1; text-align: center; }
+        
+        .btn-report { 
+            background: var(--primary); color: black; padding: 15px 20px; text-decoration: none; 
+            font-weight: bold; border-radius: 2px; display: inline-block; transition:0.3s;
+            text-transform: uppercase; letter-spacing: 1px;
+        }
+        .btn-report:hover { background: white; box-shadow: 0 0 20px var(--primary); transform: scale(1.05); }
+
+        .delay-1 { animation-delay: 0.2s; }
+        .delay-2 { animation-delay: 0.4s; }
+
+        @keyframes slideIn { to { opacity: 1; transform: translateX(0); } }
+    </style>
+</head>
+<body>
+    <header>
+        <div style="font-weight:800; color:var(--primary); letter-spacing:2px;">[ HAROON.Z ]</div>
+        <nav>
+            <a href="index.html">Accueil</a>
+            <a href="formations.html">Formations</a>
+            <a href="competences.html">Compétences</a>
+            <a href="projets.html">Projets</a>
+            <a href="stages.html" class="active">Stages</a>
+            <a href="veille.html">Veille</a>
+            <a href="contact.html">Contact</a>
+        </nav>
+    </header>
+
+    <section>
+        <h2>Rapports de Stage</h2>
+
+        <div class="stage-box delay-1">
+            <div class="stage-info">
+                <h3 style="color:var(--primary); margin-top:0;">> Stage Cybersécurité @ AISI</h3>
+                <p><strong>Lieu :</strong> Saint-Mandé | <strong>Date :</strong> 02.06.2025 – 04.07.2025</p>
+                <p style="color:var(--text-muted);">Mise en place d'AD, Pentest, sécurisation réseau et audit de vulnérabilité.</p>
+            </div>
+            <div class="stage-action">
+                <a href="rapport-aisi.pdf" class="btn-report" download>📥 Télécharger</a>
+            </div>
+        </div>
+
+        <div class="stage-box delay-2">
+            <div class="stage-info">
+                <h3 style="color:var(--primary); margin-top:0;">> Stage @ Mairie de Maisons-Alfort</h3>
+                <p><strong>Lieu :</strong> Maisons-Alfort | <strong>Date :</strong> 26.01.2026 – 20.03.2026</p>
+                <p style="color:var(--text-muted);">Gestion de parc, support utilisateur et administration réseau.</p>
+            </div>
+            <div class="stage-action">
+                <a href="rapport-mairie.pdf" class="btn-report" download>📥 Télécharger</a>
+            </div>
+        </div>
+
+    </section>
+
+    <div id="page-loader">
+    <div class="loader-content">
+        <div class="loader-text">SYSTEM_ACCESS...</div>
+        <div class="loader-bar"></div>
+    </div>
+</div>
+
+<style>
+    /* Style de l'écran de transition */
+    #page-loader {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-color: #000; /* Fond noir */
+        z-index: 99999; /* Au-dessus de tout */
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        transition: opacity 0.5s ease-in-out, visibility 0.5s;
+        opacity: 1; /* Visible par défaut au chargement */
+        visibility: visible;
+    }
+
+    /* Quand la page est chargée, on cache le loader */
+    body.loaded #page-loader {
+        opacity: 0;
+        visibility: hidden;
+    }
+
+    /* Le texte du loader */
+    .loader-text {
+        color: var(--primary, #00e599); /* Utilise ta couleur verte */
+        font-family: 'Consolas', monospace;
+        font-size: 1.5rem;
+        letter-spacing: 3px;
+        margin-bottom: 10px;
+        animation: blink 0.5s infinite alternate;
+    }
+
+    /* La barre de chargement animée */
+    .loader-bar {
+        width: 200px;
+        height: 2px;
+        background: #333;
+        position: relative;
+        overflow: hidden;
+    }
+    .loader-bar::after {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: -100%;
+        width: 100%;
+        height: 100%;
+        background: var(--primary, #00e599);
+        animation: loading 1.5s infinite;
+    }
+
+    @keyframes loading {
+        0% { left: -100%; }
+        50% { left: 100%; }
+        100% { left: 100%; }
+    }
+    
+    @keyframes blink {
+        from { opacity: 1; }
+        to { opacity: 0.5; }
+    }
+</style>
+
+<script>
+    // 1. Au chargement de la page : On enlève l'écran noir
+    window.addEventListener('load', () => {
+        // Petit délai pour admirer l'effet "Hacker"
+        setTimeout(() => {
+            document.body.classList.add('loaded');
+        }, 400); 
+    });
+
+    // 2. Au clic sur un lien : On remet l'écran noir avant de changer de page
+    document.querySelectorAll('a').forEach(link => {
+        link.addEventListener('click', function(e) {
+            // Si c'est un téléchargement ou un lien externe, on ne fait rien
+            if (this.hasAttribute('download') || this.target === '_blank') return;
+            
+            // Sinon, on intercepte le clic
+            e.preventDefault();
+            const targetUrl = this.href;
+
+            // On remet l'écran noir (enlève la classe 'loaded')
+            document.body.classList.remove('loaded');
+
+            // On attend 500ms (le temps de la transition CSS) avant de changer de page
+            setTimeout(() => {
+                window.location.href = targetUrl;
+            }, 500);
+        });
+    });
+</script>
+
+<div id="theme-toggle" title="Changer de Mode (Hacker / Defense)">
+    <span id="toggle-icon">🛡️</span>
+</div>
+
+<style>
+    /* --- DEFINITION DES COULEURS --- */
+    
+    /* 1. Mode par Défaut (VERT / HACKER) */
+    :root {
+        --primary: #00e599;      /* Vert Néon */
+        --bg: #050505;           /* Noir */
+        --card-bg: #121212;      /* Gris très foncé */
+        --text: #e5e7eb;         /* Blanc cassé */
+        --text-muted: #9ca3af;   /* Gris */
+    }
+
+    /* 2. Mode "BLUE TEAM" (BLEU NUIT / CYAN) - Activé via la classe .blue-mode */
+    body.blue-mode {
+        --primary: #00f3ff;      /* Cyan Électrique */
+        --bg: #0a0f1c;           /* Bleu Nuit Profond */
+        --card-bg: #161b2e;      /* Bleu Nuit plus clair */
+        --text: #e0f7fa;         /* Blanc bleuté */
+        --text-muted: #94a3b8;   /* Gris bleu */
+    }
+
+    /* --- STYLE DU BOUTON --- */
+    #theme-toggle {
+        position: fixed;
+        bottom: 30px;
+        right: 30px;
+        width: 50px;
+        height: 50px;
+        background-color: var(--card-bg);
+        border: 2px solid var(--primary);
+        border-radius: 50%; /* Bouton rond */
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        cursor: pointer;
+        z-index: 100000; /* Au-dessus de tout */
+        transition: 0.3s;
+        box-shadow: 0 0 10px rgba(0,0,0,0.5);
+    }
+
+    #theme-toggle:hover {
+        transform: scale(1.1) rotate(15deg);
+        box-shadow: 0 0 20px var(--primary);
+        background-color: var(--primary);
+    }
+
+    #theme-toggle:hover #toggle-icon {
+        /* L'icône change de couleur selon le fond, on force le noir ou blanc pour le contraste */
+        filter: grayscale(100%) brightness(0); 
+    }
+
+    #toggle-icon {
+        font-size: 24px;
+        transition: 0.3s;
+        user-select: none;
+        /* Petit ajustement pour centrer parfaitement les emojis */
+        line-height: 1; 
+        margin-top: 2px;
+    }
+</style>
+
+<script>
+    const toggleButton = document.getElementById('theme-toggle');
+    const toggleIcon = document.getElementById('toggle-icon');
+    const body = document.body;
+
+    // Vérifier si l'utilisateur a déjà choisi un thème
+    const currentTheme = localStorage.getItem('theme');
+
+    // Appliquer le thème sauvegardé au chargement
+    if (currentTheme === 'blue') {
+        body.classList.add('blue-mode');
+        // Si on est en mode Bleu, le bouton propose de revenir au mode Hacker
+        toggleIcon.textContent = '💀'; 
+    } else {
+        // Si on est en mode Vert, le bouton propose de passer au mode Défense
+        toggleIcon.textContent = '🛡️'; 
+    }
+
+    // Action au clic
+    toggleButton.addEventListener('click', () => {
+        body.classList.toggle('blue-mode');
+
+        if (body.classList.contains('blue-mode')) {
+            // On vient d'activer le mode Bleu
+            localStorage.setItem('theme', 'blue');
+            toggleIcon.textContent = '💀'; // Afficher le crâne pour le prochain clic
+        } else {
+            // On vient de revenir au mode Vert
+            localStorage.setItem('theme', 'green');
+            toggleIcon.textContent = '🛡️'; // Afficher le bouclier pour le prochain clic
+        }
+    });
+</script>
+</body>
+</html>

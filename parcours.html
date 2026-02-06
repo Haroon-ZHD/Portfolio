@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Parcours - Haroon ZAHID</title>
+    <style>
+        :root { --primary: #00e599; --secondary: #10b981; --bg: #050505; --card-bg: #121212; --text: #e5e7eb; --text-muted: #9ca3af; }
+        body { margin: 0; font-family: 'Segoe UI', sans-serif; background-color: var(--bg); color: var(--text); line-height: 1.6; }
+        
+        header { background-color: rgba(5, 5, 5, 0.95); padding: 1rem 5%; position: fixed; width: 90%; top: 0; display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid #333; z-index: 1000; }
+        nav a { color: var(--text); text-decoration: none; margin-left: 20px; font-weight: 500; transition: 0.3s; letter-spacing: 0.5px; }
+        nav a:hover, nav a.active { color: var(--primary); text-shadow: 0 0 10px rgba(0, 229, 153, 0.4); }
+        nav a.active { border-bottom: 2px solid var(--primary); padding-bottom: 5px; }
+
+        section { padding: 100px 10%; max-width: 1200px; margin: 0 auto; }
+        h2 { font-size: 2rem; border-left: 4px solid var(--primary); padding-left: 15px; margin-bottom: 40px; color: var(--text); text-transform: uppercase; letter-spacing: 2px; }
+
+        /* Grid */
+        .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 25px; }
+        
+        /* Card Style Hacker */
+        .card { background-color: var(--card-bg); padding: 25px; border-radius: 4px; border: 1px solid #333; transition: all 0.3s; position: relative; overflow: hidden; }
+        .card:hover { transform: translateY(-3px); border-color: var(--primary); box-shadow: 0 5px 20px rgba(0, 229, 153, 0.1); }
+        .card::before { content: ''; position: absolute; top: 0; left: 0; width: 3px; height: 100%; background: var(--primary); opacity: 0.5; }
+        
+        .tag { background: rgba(0, 229, 153, 0.1); color: var(--primary); padding: 4px 10px; border-radius: 2px; font-size: 0.75rem; margin-right: 5px; display: inline-block; margin-bottom: 10px; border: 1px solid rgba(0, 229, 153, 0.2); font-family: monospace; }
+        .date { font-weight: bold; color: var(--primary); display: block; margin-bottom: 5px; font-family: monospace; font-size: 1.1rem; }
+        .location { font-size: 0.9rem; color: var(--text-muted); display: block; margin-bottom: 15px; font-style: italic; }
+        
+        footer { text-align: center; padding: 40px; border-top: 1px solid #333; color: var(--text-muted); margin-top: 50px; font-size: 0.8rem; }
+    </style>
+</head>
+<body>
+
+    <header>
+        <div style="font-weight:800; font-size:1.4rem; letter-spacing:1px;">HAROON <span style="color:var(--primary)">ZAHID</span></div>
+        <nav>
+            <a href="index.html">ACCUEIL</a>
+            <a href="parcours.html" class="active">PARCOURS</a>
+            <a href="cv.html">MON CV</a>
+            <a href="contact.html">CONTACT</a>
+        </nav>
+    </header>
+
+    <section>
+        <h2>Expériences Pro</h2>
+        <div class="grid">
+            <div class="card">
+                <span class="date">> 06.2025 – 07.2025</span>
+                <h3>Stage Cybersécurité @ AISI</h3>
+                <span class="location">📍 Saint-Mandé</span>
+                <div>
+                    <span class="tag">Pentest</span>
+                    <span class="tag">Active Directory</span>
+                    <span class="tag">Windows Server</span>
+                </div>
+                <ul style="color:var(--text-muted); padding-left:20px; font-size:0.95rem; list-style-type: square;">
+                    <li>Mise en place d'Active Directory avec PfSense.</li>
+                    <li>Amélioration sécurité via GPO et politiques.</li>
+                    <li>Exploitation NTLM/Kerberos (Petit Potam, Responder).</li>
+                </ul>
+            </div>
+
+            <div class="card">
+                <span class="date">> Depuis 01.2017</span>
+                <h3>Vendeur (Job Étudiant)</h3>
+                <span class="location">📍 Marché, Île-de-France</span>
+                <p style="color:var(--text-muted);">Vente, négociation, gestion de la caisse et interaction client. Gestion des stocks.</p>
+            </div>
+        </div>
+    </section>
+
+    <section>
+        <h2>Formations</h2>
+        <div class="grid">
+            <div class="card">
+                <span class="date">> 2024 – 2026</span>
+                <h3>BTS SIO (Option SISR)</h3>
+                <span class="location">📍 Lycée René Descartes, Champs-sur-Marne</span>
+                <p>Services Informatiques aux Organisations. Option Solutions d'Infrastructures, Systèmes et Réseaux.</p>
+            </div>
+            <div class="card">
+                <span class="date">> 2023</span>
+                <h3>Baccalauréat Général</h3>
+                <span class="location">📍 Lycée Marx Dormoy</span>
+                <p>Spécialités Mathématiques et SVT.</p>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <p>&copy; 2026 - Portfolio Haroon ZAHID</p>
+    </footer>
+
+</body>
+</html>
