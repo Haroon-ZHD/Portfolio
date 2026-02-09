@@ -58,224 +58,29 @@
             <p>> <strong>LinkedIn :</strong> linkedin.com/in/haroon-zahid94</p>
             <hr style="border:0; border-top:1px dashed #333; margin:20px 0;">
             
-            <form name="contact" method="POST" data-netlify="true">
+            <form name="contact" method="POST" data-netlify="true" action="/success.html">
+                
                 <input type="hidden" name="form-name" value="contact" />
 
                 <label>NOM_UTILISATEUR :</label>
-                <input type="text" name="nom" required>
+                <input type="text" name="nom" required placeholder="Entrez votre nom">
                 
                 <label>EMAIL_ADDRESS :</label>
-                <input type="email" name="email" required>
+                <input type="email" name="email" required placeholder="Entrez votre email">
                 
                 <label>MESSAGE_CONTENT :</label>
-                <textarea name="message" rows="6" required></textarea>
+                <textarea name="message" rows="6" required placeholder="Votre message..."></textarea>
                 
                 <button type="submit" class="btn">INITIALISER_ENVOI</button>
             </form>
-            </div>
+        </div>
     </section>
 
-    <div id="page-loader">
-    <div class="loader-content">
-        <div class="loader-text">SYSTEM_ACCESS...</div>
-        <div class="loader-bar"></div>
-    </div>
-</div>
-
-<style>
-    /* Style de l'écran de transition */
-    #page-loader {
-        position: fixed;
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: 100%;
-        background-color: #000; /* Fond noir */
-        z-index: 99999; /* Au-dessus de tout */
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        transition: opacity 0.5s ease-in-out, visibility 0.5s;
-        opacity: 1; /* Visible par défaut au chargement */
-        visibility: visible;
-    }
-
-    /* Quand la page est chargée, on cache le loader */
-    body.loaded #page-loader {
-        opacity: 0;
-        visibility: hidden;
-    }
-
-    /* Le texte du loader */
-    .loader-text {
-        color: var(--primary, #00e599); /* Utilise ta couleur verte */
-        font-family: 'Consolas', monospace;
-        font-size: 1.5rem;
-        letter-spacing: 3px;
-        margin-bottom: 10px;
-        animation: blink 0.5s infinite alternate;
-    }
-
-    /* La barre de chargement animée */
-    .loader-bar {
-        width: 200px;
-        height: 2px;
-        background: #333;
-        position: relative;
-        overflow: hidden;
-    }
-    .loader-bar::after {
-        content: '';
-        position: absolute;
-        top: 0;
-        left: -100%;
-        width: 100%;
-        height: 100%;
-        background: var(--primary, #00e599);
-        animation: loading 1.5s infinite;
-    }
-
-    @keyframes loading {
-        0% { left: -100%; }
-        50% { left: 100%; }
-        100% { left: 100%; }
-    }
-    
-    @keyframes blink {
-        from { opacity: 1; }
-        to { opacity: 0.5; }
-    }
-</style>
-
-<script>
-    // 1. Au chargement de la page : On enlève l'écran noir
-    window.addEventListener('load', () => {
-        // Petit délai pour admirer l'effet "Hacker"
-        setTimeout(() => {
-            document.body.classList.add('loaded');
-        }, 400); 
-    });
-
-    // 2. Au clic sur un lien : On remet l'écran noir avant de changer de page
-    document.querySelectorAll('a').forEach(link => {
-        link.addEventListener('click', function(e) {
-            // Si c'est un téléchargement ou un lien externe, on ne fait rien
-            if (this.hasAttribute('download') || this.target === '_blank') return;
-            
-            // Sinon, on intercepte le clic
-            e.preventDefault();
-            const targetUrl = this.href;
-
-            // On remet l'écran noir (enlève la classe 'loaded')
-            document.body.classList.remove('loaded');
-
-            // On attend 500ms (le temps de la transition CSS) avant de changer de page
-            setTimeout(() => {
-                window.location.href = targetUrl;
-            }, 500);
-        });
-    });
-</script>
-
-<div id="theme-toggle" title="Changer de Mode (Hacker / Defense)">
-    <span id="toggle-icon">🛡️</span>
-</div>
-
-<style>
-    /* 1. Mode par Défaut (VERT / HACKER) */
-    :root {
-        --primary: #00e599;      /* Vert Néon (Couleur actuelle) */
-        --next-color: #00f3ff;   /* Cyan Électrique (Couleur du bouton/mode suivant) */
-        --bg: #050505;           /* Noir */
-        --card-bg: #121212;      /* Gris très foncé */
-        --text: #e5e7eb;         /* Blanc cassé */
-        --text-muted: #9ca3af;   /* Gris */
-    }
-
-    /* 2. Mode "BLUE TEAM" (BLEU NUIT / CYAN) */
-    body.blue-mode {
-        --primary: #00f3ff;      /* Cyan Électrique (Couleur actuelle) */
-        --next-color: #00e599;   /* Vert Néon (Couleur du bouton/mode suivant) */
-        --bg: #0a0f1c;           /* Bleu Nuit Profond */
-        --card-bg: #161b2e;      /* Bleu Nuit plus clair */
-        --text: #e0f7fa;         /* Blanc bleuté */
-        --text-muted: #94a3b8;   /* Gris bleu */
-    }
-
-    /* --- STYLE DU BOUTON --- */
-    #theme-toggle {
-        position: fixed;
-        bottom: 30px;
-        right: 30px;
-        width: 50px;
-        height: 50px;
-        background-color: var(--card-bg);
-        /* Le contour prend la couleur du mode VERS lequel on va aller */
-        border: 2px solid var(--next-color);
-        color: var(--next-color);
-        border-radius: 50%;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        cursor: pointer;
-        z-index: 100000;
-        transition: 0.3s;
-        box-shadow: 0 0 10px rgba(0,0,0,0.5);
-    }
-
-    #theme-toggle:hover {
-        transform: scale(1.1) rotate(15deg);
-        /* L'ombre et le fond deviennent la couleur suivante */
-        box-shadow: 0 0 20px var(--next-color);
-        background-color: var(--next-color);
-    }
-
-    /* Gestion de la couleur de l'icône au survol pour le contraste */
-    #theme-toggle:hover #toggle-icon {
-        filter: grayscale(100%) brightness(0) invert(1); /* Devient Blanc */
-    }
-    /* Si on est en mode normal (Vert) et qu'on survole (le fond devient Cyan clair), on met l'icône en noir pour que ce soit lisible */
-    body:not(.blue-mode) #theme-toggle:hover #toggle-icon {
-        filter: grayscale(100%) brightness(0); /* Devient Noir */
-    }
-
-    #toggle-icon {
-        font-size: 24px;
-        transition: 0.3s;
-        user-select: none;
-        line-height: 1;
-        margin-top: 2px;
-    }
-</style>
-
-<script>
-    const toggleButton = document.getElementById('theme-toggle');
-    const toggleIcon = document.getElementById('toggle-icon');
-    const body_theme = document.body;
-
-    // Vérifier si l'utilisateur a déjà choisi un thème
-    const currentTheme = localStorage.getItem('theme');
-
-    // Appliquer le thème sauvegardé
-    if (currentTheme === 'blue') {
-        body_theme.classList.add('blue-mode');
-        toggleIcon.textContent = '💀'; // Mode Bleu actif -> On propose le mode Hacker
-    } else {
-        toggleIcon.textContent = '🛡️'; // Mode Vert actif -> On propose le mode Défense
-    }
-
-    // Action au clic
-    toggleButton.addEventListener('click', () => {
-        body_theme.classList.toggle('blue-mode');
-
-        if (body_theme.classList.contains('blue-mode')) {
-            localStorage.setItem('theme', 'blue');
-            toggleIcon.textContent = '💀';
-        } else {
-            localStorage.setItem('theme', 'green');
-            toggleIcon.textContent = '🛡️';
-        }
-    });
-</script>
+    <div id="page-loader"><div class="loader-content"><div class="loader-text">SYSTEM_ACCESS...</div><div class="loader-bar"></div></div></div>
+    <style>#page-loader{position:fixed;top:0;left:0;width:100%;height:100%;background-color:#000;z-index:99999;display:flex;justify-content:center;align-items:center;transition:opacity 0.5s,visibility 0.5s;opacity:1;visibility:visible}body.loaded #page-loader{opacity:0;visibility:hidden}.loader-text{color:var(--primary);font-family:monospace;font-size:1.5rem;margin-bottom:10px}.loader-bar{width:200px;height:2px;background:#333;position:relative;overflow:hidden}.loader-bar::after{content:'';position:absolute;top:0;left:-100%;width:100%;height:100%;background:var(--primary);animation:loading 1.5s infinite}@keyframes loading{0%{left:-100%}50%{left:100%}100%{left:100%}}</style>
+    <script>window.addEventListener('load', ()=>{setTimeout(()=>{document.body.classList.add('loaded')},400)});document.querySelectorAll('a').forEach(l=>{l.addEventListener('click',function(e){if(this.hasAttribute('download')||this.target==='_blank')return;e.preventDefault();const u=this.href;document.body.classList.remove('loaded');setTimeout(()=>{window.location.href=u},500)})});</script>
+    <div id="theme-toggle" title="Changer de Mode"><span id="toggle-icon">🛡️</span></div>
+    <style>:root{--primary:#00e599;--next-color:#00f3ff;--bg:#050505;--card-bg:#121212;--text:#e5e7eb;--text-muted:#9ca3af}body.blue-mode{--primary:#00f3ff;--next-color:#00e599;--bg:#0a0f1c;--card-bg:#161b2e;--text:#e0f7fa;--text-muted:#94a3b8}#theme-toggle{position:fixed;bottom:30px;right:30px;width:50px;height:50px;background-color:var(--card-bg);border:2px solid var(--next-color);color:var(--next-color);border-radius:50%;display:flex;justify-content:center;align-items:center;cursor:pointer;z-index:100000;transition:0.3s;box-shadow:0 0 10px rgba(0,0,0,0.5)}#theme-toggle:hover{transform:scale(1.1) rotate(15deg);box-shadow:0 0 20px var(--next-color);background-color:var(--next-color)}body:not(.blue-mode) #theme-toggle:hover #toggle-icon{filter:grayscale(100%) brightness(0)}#theme-toggle:hover #toggle-icon{filter:grayscale(100%) brightness(0) invert(1)}#toggle-icon{font-size:24px;transition:0.3s;user-select:none;line-height:1;margin-top:2px}</style>
+    <script>const tBtn=document.getElementById('theme-toggle'),tIcon=document.getElementById('toggle-icon'),bd=document.body;const cTheme=localStorage.getItem('theme');if(cTheme==='blue'){bd.classList.add('blue-mode');tIcon.textContent='💀'}else{tIcon.textContent='🛡️'}tBtn.addEventListener('click',()=>{bd.classList.toggle('blue-mode');if(bd.classList.contains('blue-mode')){localStorage.setItem('theme','blue');tIcon.textContent='💀'}else{localStorage.setItem('theme','green');tIcon.textContent='🛡️'}})</script>
 </body>
 </html>
