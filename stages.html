@@ -190,20 +190,20 @@
 </div>
 
 <style>
-    /* --- DEFINITION DES COULEURS --- */
-    
     /* 1. Mode par Défaut (VERT / HACKER) */
     :root {
-        --primary: #00e599;      /* Vert Néon */
+        --primary: #00e599;      /* Vert Néon (Couleur actuelle) */
+        --next-color: #00f3ff;   /* Cyan Électrique (Couleur du bouton/mode suivant) */
         --bg: #050505;           /* Noir */
         --card-bg: #121212;      /* Gris très foncé */
         --text: #e5e7eb;         /* Blanc cassé */
         --text-muted: #9ca3af;   /* Gris */
     }
 
-    /* 2. Mode "BLUE TEAM" (BLEU NUIT / CYAN) - Activé via la classe .blue-mode */
+    /* 2. Mode "BLUE TEAM" (BLEU NUIT / CYAN) */
     body.blue-mode {
-        --primary: #00f3ff;      /* Cyan Électrique */
+        --primary: #00f3ff;      /* Cyan Électrique (Couleur actuelle) */
+        --next-color: #00e599;   /* Vert Néon (Couleur du bouton/mode suivant) */
         --bg: #0a0f1c;           /* Bleu Nuit Profond */
         --card-bg: #161b2e;      /* Bleu Nuit plus clair */
         --text: #e0f7fa;         /* Blanc bleuté */
@@ -218,34 +218,40 @@
         width: 50px;
         height: 50px;
         background-color: var(--card-bg);
-        border: 2px solid var(--primary);
-        border-radius: 50%; /* Bouton rond */
+        /* Le contour prend la couleur du mode VERS lequel on va aller */
+        border: 2px solid var(--next-color);
+        color: var(--next-color);
+        border-radius: 50%;
         display: flex;
         justify-content: center;
         align-items: center;
         cursor: pointer;
-        z-index: 100000; /* Au-dessus de tout */
+        z-index: 100000;
         transition: 0.3s;
         box-shadow: 0 0 10px rgba(0,0,0,0.5);
     }
 
     #theme-toggle:hover {
         transform: scale(1.1) rotate(15deg);
-        box-shadow: 0 0 20px var(--primary);
-        background-color: var(--primary);
+        /* L'ombre et le fond deviennent la couleur suivante */
+        box-shadow: 0 0 20px var(--next-color);
+        background-color: var(--next-color);
     }
 
+    /* Gestion de la couleur de l'icône au survol pour le contraste */
     #theme-toggle:hover #toggle-icon {
-        /* L'icône change de couleur selon le fond, on force le noir ou blanc pour le contraste */
-        filter: grayscale(100%) brightness(0); 
+        filter: grayscale(100%) brightness(0) invert(1); /* Devient Blanc */
+    }
+    /* Si on est en mode normal (Vert) et qu'on survole (le fond devient Cyan clair), on met l'icône en noir pour que ce soit lisible */
+    body:not(.blue-mode) #theme-toggle:hover #toggle-icon {
+        filter: grayscale(100%) brightness(0); /* Devient Noir */
     }
 
     #toggle-icon {
         font-size: 24px;
         transition: 0.3s;
         user-select: none;
-        /* Petit ajustement pour centrer parfaitement les emojis */
-        line-height: 1; 
+        line-height: 1;
         margin-top: 2px;
     }
 </style>
@@ -253,33 +259,29 @@
 <script>
     const toggleButton = document.getElementById('theme-toggle');
     const toggleIcon = document.getElementById('toggle-icon');
-    const body = document.body;
+    const body_theme = document.body;
 
     // Vérifier si l'utilisateur a déjà choisi un thème
     const currentTheme = localStorage.getItem('theme');
 
-    // Appliquer le thème sauvegardé au chargement
+    // Appliquer le thème sauvegardé
     if (currentTheme === 'blue') {
-        body.classList.add('blue-mode');
-        // Si on est en mode Bleu, le bouton propose de revenir au mode Hacker
-        toggleIcon.textContent = '💀'; 
+        body_theme.classList.add('blue-mode');
+        toggleIcon.textContent = '💀'; // Mode Bleu actif -> On propose le mode Hacker
     } else {
-        // Si on est en mode Vert, le bouton propose de passer au mode Défense
-        toggleIcon.textContent = '🛡️'; 
+        toggleIcon.textContent = '🛡️'; // Mode Vert actif -> On propose le mode Défense
     }
 
     // Action au clic
     toggleButton.addEventListener('click', () => {
-        body.classList.toggle('blue-mode');
+        body_theme.classList.toggle('blue-mode');
 
-        if (body.classList.contains('blue-mode')) {
-            // On vient d'activer le mode Bleu
+        if (body_theme.classList.contains('blue-mode')) {
             localStorage.setItem('theme', 'blue');
-            toggleIcon.textContent = '💀'; // Afficher le crâne pour le prochain clic
+            toggleIcon.textContent = '💀';
         } else {
-            // On vient de revenir au mode Vert
             localStorage.setItem('theme', 'green');
-            toggleIcon.textContent = '🛡️'; // Afficher le bouclier pour le prochain clic
+            toggleIcon.textContent = '🛡️';
         }
     });
 </script>
