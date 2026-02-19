@@ -22,7 +22,16 @@
         nav a:hover, nav a.active { color: var(--primary); text-shadow: 0 0 10px rgba(0,229,153,0.8); }
         
         section { padding: 120px 10%; max-width: 1000px; margin: 0 auto; }
-        h2 { border-left: 4px solid var(--primary); padding-left: 15px; margin-bottom: 40px; text-transform: uppercase; letter-spacing: 2px; }
+        h2 { border-left: 4px solid var(--primary); padding-left: 15px; margin-bottom: 30px; text-transform: uppercase; letter-spacing: 2px; }
+
+        /* Bouton Télécharger EXACTEMENT comme sur la page Projets */
+        .btn-dl { 
+            display: inline-block; margin-bottom: 40px; 
+            background: transparent; color: var(--primary); border: 1px solid var(--primary);
+            padding: 12px 24px; text-decoration: none; border-radius: 2px; font-size: 0.9rem; 
+            text-transform: uppercase; letter-spacing: 1px; transition: 0.3s;
+        }
+        .btn-dl:hover { background: var(--primary); color: black; box-shadow: 0 0 15px var(--primary); }
 
         /* CARTES ET ANIMATIONS */
         .card { background: var(--card-bg); padding: 25px; margin-bottom: 20px; border: 1px solid #333; border-left: 2px solid var(--primary); transition: 0.3s; }
@@ -54,6 +63,8 @@
 
     <section>
         <h2 class="animate-up">Mon Parcours</h2>
+        
+        <a href="cv.pdf" class="btn-dl animate-up" download>📄 Télécharger mon CV</a>
         
         <div class="card animate-up delay-1">
             <span class="date">> 2024 – 2026 (En cours)</span>
