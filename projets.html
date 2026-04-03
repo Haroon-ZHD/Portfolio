@@ -38,6 +38,8 @@
         .delay-1 { animation-delay: 0.2s; }
         .delay-2 { animation-delay: 0.4s; }
         .delay-3 { animation-delay: 0.6s; }
+        .delay-4 { animation-delay: 0.8s; }
+        .delay-5 { animation-delay: 1.0s; }
 
         @keyframes slideUp { to { opacity: 1; transform: translateY(0); } }
     </style>
@@ -47,6 +49,7 @@
         <div style="font-weight:800; color:var(--primary); letter-spacing:2px;">[ HAROON.Z ]</div>
         <nav>
             <a href="index.html">Accueil</a>
+            <a href="apropos.html">À propos</a>
             <a href="formations.html">Formations</a>
             <a href="competences.html">Compétences</a>
             <a href="projets.html" class="active">Projets</a>
@@ -59,26 +62,42 @@
     <section>
         <h2>Projets & TP</h2>
         <div class="grid">
+            
             <div class="project-card delay-1">
-                <h3 style="color:var(--primary);">> Labo VPN Stormshield</h3>
-                <p>Mise en place d'un tunnel VPN IPSec pour sécuriser les communications.</p>
-                <p style="color:var(--text-muted); font-size:0.8rem;">[ Réseau, Chiffrement, Firewall ]</p>
-                <a href="tp-vpn.pdf" class="btn-dl" download>📄 Télécharger le PDF</a>
+                <h3 style="color:var(--primary);">> Activité Active Directory</h3>
+                <p>Déploiement d'un annuaire et configuration des stratégies de groupe.</p>
+                <p style="color:var(--text-muted); font-size:0.8rem;">[ Windows Server, AD DS, GPO ]</p>
+                <a href="document-labo-windows-gpo.pdf" class="btn-dl" download>📄 Télécharger le PDF</a>
             </div>
 
             <div class="project-card delay-2">
-                <h3 style="color:var(--primary);">> Déploiement PfSense</h3>
-                <p>Installation et configuration d'un pare-feu, filtrage et NAT.</p>
-                <p style="color:var(--text-muted); font-size:0.8rem;">[ Sécurité, Routage ]</p>
-                <a href="tp-pfsense.pdf" class="btn-dl" download>📄 Télécharger le PDF</a>
+                <h3 style="color:var(--primary);">> Activité RAID</h3>
+                <p>Mise en place de grappes de disques pour la redondance et la tolérance aux pannes.</p>
+                <p style="color:var(--text-muted); font-size:0.8rem;">[ Stockage, Redondance, Matériel ]</p>
+                <a href="document-raid.pdf" class="btn-dl" download>📄 Télécharger le PDF</a>
             </div>
 
             <div class="project-card delay-3">
-                <h3 style="color:var(--primary);">> Windows Server & GPO</h3>
-                <p>Contrôleur de domaine, utilisateurs et stratégies de groupe.</p>
-                <p style="color:var(--text-muted); font-size:0.8rem;">[ Admin Sys, AD DS ]</p>
-                <a href="tp-windows.pdf" class="btn-dl" download>📄 Télécharger le PDF</a>
+                <h3 style="color:var(--primary);">> Activité VPN</h3>
+                <p>Configuration de tunnels virtuels pour sécuriser les communications réseau.</p>
+                <p style="color:var(--text-muted); font-size:0.8rem;">[ Réseau, Cybersécurité, Chiffrement ]</p>
+                <a href="LABO-VPN.pdf" class="btn-dl" download>📄 Télécharger le PDF</a>
             </div>
+
+            <div class="project-card delay-4">
+                <h3 style="color:var(--primary);">> Activité Apache 2</h3>
+                <p>Installation, hébergement et sécurisation de services web sous Linux.</p>
+                <p style="color:var(--text-muted); font-size:0.8rem;">[ Linux, Serveur Web, HTTP/HTTPS ]</p>
+                <a href="tp-apache2.pdf" class="btn-dl" download>📄 Télécharger le PDF</a>
+            </div>
+
+            <div class="project-card delay-5">
+                <h3 style="color:var(--primary);">> Activité DNS Spoofing</h3>
+                <p>Compréhension et simulation d'une attaque par empoisonnement de cache DNS.</p>
+                <p style="color:var(--text-muted); font-size:0.8rem;">[ Cybersécurité, Attaque, Réseau ]</p>
+                <a href="tp-dns-spoofing.pdf" class="btn-dl" download>📄 Télécharger le PDF</a>
+            </div>
+
         </div>
     </section>
 
